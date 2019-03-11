@@ -1,18 +1,16 @@
-// el inicio de la app
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Main from '../src/components/Main';
-import { Provider } from 'react-redux'
-import store from '../src/redux/store'
-
+import store from './redux/store';
 
 
 ReactDOM.render(
-      <Main />,
-    document.getElementById('app')
-  );
-
-
-
-  
+  <Provider store={store}>
+    <BrowserRouter>
+      <Main/>
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('app')
+);

@@ -4,42 +4,29 @@ var bodyParser = require('body-parser');
 const axios = require('axios')
 var path = require('path');
 var morgan = require('morgan')
+const User = require('./models/User');
+const db = require('./config/db');
+const userRouter = require('./routes/userRouter')
+const favRouter = require('./routes/favRouter')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan('dev'))
+app.use('/users',userRouter)
+app.use('/favourites',favRouter)
 
-var port = 3000
 app.use(express.static(path.resolve(__dirname, 'public')))
 
-app.use(function (req, res, next) {
+var port = 8080
 
-    if (path.extname(req.path).length > 0) {
-        res.status(404).end();
-    } else {
-        next(null);
-    }
-
-});
-
-app.get('/?titulo=:titulo', function (req, res) {
-    axios.get('https://www.omdbapi.com/?apikey=20dac387&s=' + req.body.titulo)
-        .then(search =>
-            res.send(search.data))
-})
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + './public/index.html')
+app.get('/*', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html')
 });
 
 
-// app.get('/batman', function (req, res) {
-//     axios.get('https://www.omdbapi.com/?apikey=20dac387&s=batman')
-//         .then(search =>
-//             res.send(search.data))
-// })
 
-app.listen(port, function () {
-    console.log('Listening on', port)
-})
 
+db.sync({ force: false }).then((con) => {
+    console.log(`${con.options.dialect} database ${con.config.database} connected at ${con.config.host}:${con.config.port}`)
+    app.listen(port, () => console.log('SERVER LISTENING AT PORT',port))
+  })

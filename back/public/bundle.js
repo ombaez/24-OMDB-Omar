@@ -56970,25 +56970,90 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-var Login = function Login(_ref) {
-  var onSubmit = _ref.onSubmit;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "OMDB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "LOGIN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    method: "POST",
-    action: "/users/login"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    placeholder: "Email",
-    name: "email"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    placeholder: "Password",
-    name: "password"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onSubmit: onSubmit
-  }, "SUBMIT"))));
+
+var Login =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Login, _React$Component);
+
+  function Login(props) {
+    var _this;
+
+    _classCallCheck(this, Login);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Login).call(this, props));
+    _this.state = {
+      input: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      var val = e.target.value;
+      this.setState({
+        input: val
+      });
+      console.log(this.state.input);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "OMDB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "LOGIN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, console.log(this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        method: "POST",
+        action: "/users/login"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Email",
+        onChange: this.handleChange,
+        name: "email"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Password",
+        name: "password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onSubmit: console.log(this.props)
+      }, "SUBMIT"))));
+    }
+  }]);
+
+  return Login;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Login);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    searchMovie: function searchMovie(movieID) {
+      return dispatch(oneMovie(movieID));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (connect(mapStateToProps, mapDispatchToProps)(Login));
 
 /***/ }),
 
@@ -57076,19 +57141,19 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: '/users',
+        path: '/user',
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserReg__WEBPACK_IMPORTED_MODULE_6__["default"], null);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/userReg/login",
+        path: "/user/login",
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Login__WEBPACK_IMPORTED_MODULE_7__["default"], null);
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/userReg/register",
+        path: "/user/register",
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Register__WEBPACK_IMPORTED_MODULE_8__["default"], null);
         }
@@ -57098,7 +57163,7 @@ function (_React$Component) {
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_FavouritesMovies__WEBPACK_IMPORTED_MODULE_9__["default"], null);
         }
-      })));
+      }), console.log(this.props)));
     }
   }]);
 
@@ -57381,16 +57446,11 @@ function (_React$Component) {
   _createClass(UserReg, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/userReg"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login - Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/userReg/login"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login - Register"), console.log(this.props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/user/login"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "LOGIN")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/userReg/register"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "REGISTER")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        method: "POST",
-        action: "/logout"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "LogOut")));
+        to: "/user/register"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "REGISTER")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "LogOut")));
     }
   }]);
 
@@ -57659,7 +57719,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*!*****************************************************!*\
   !*** ./src/redux/action-creators/action-creator.js ***!
   \*****************************************************/
-/*! exports provided: receiveMovies, receiveFavMovies, receiveSearchTitle, buscarMovies, oneMovie, favMovies */
+/*! exports provided: receiveMovies, receiveFavMovies, receiveSearchTitle, setUser, createUser, buscarMovies, oneMovie, favMovies, setUserinStore, addUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57667,14 +57727,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveMovies", function() { return receiveMovies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveFavMovies", function() { return receiveFavMovies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchTitle", function() { return receiveSearchTitle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUser", function() { return setUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUser", function() { return createUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "buscarMovies", function() { return buscarMovies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oneMovie", function() { return oneMovie; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "favMovies", function() { return favMovies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUserinStore", function() { return setUserinStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addUser", function() { return addUser; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants */ "./src/redux/constants.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./src/redux/store.js");
-
 
 
 var receiveMovies = function receiveMovies(movies) {
@@ -57703,6 +57765,18 @@ var receiveSearchTitle = function receiveSearchTitle(title) {
     title: title
   };
 };
+var setUser = function setUser(user) {
+  return {
+    type: _constants__WEBPACK_IMPORTED_MODULE_1__["SET_USER"],
+    user: user
+  };
+};
+var createUser = function createUser(user) {
+  return {
+    type: CREATE_USER,
+    user: user
+  };
+};
 var buscarMovies = function buscarMovies(input) {
   return function (dispatch) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://www.omdbapi.com/?apikey=20dac387&s=".concat(input)).then(function (res) {
@@ -57728,6 +57802,22 @@ var favMovies = function favMovies() {
     };
   };
 };
+var setUserinStore = function setUserinStore(user) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/user/login:id').then(function (data) {
+      return console.log(data);
+    });
+  };
+};
+var addUser = function addUser(user) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/user/register', {
+      user: user
+    }).then(function (data) {
+      return console.log(data);
+    });
+  };
+};
 
 /***/ }),
 
@@ -57735,7 +57825,7 @@ var favMovies = function favMovies() {
 /*!********************************!*\
   !*** ./src/redux/constants.js ***!
   \********************************/
-/*! exports provided: RECEIVE_MOVIES, RECEIVE_MOVIE, RECEIVE_SEARCH, RECEIVE_FAVMOVIES */
+/*! exports provided: RECEIVE_MOVIES, RECEIVE_MOVIE, RECEIVE_SEARCH, RECEIVE_FAVMOVIES, SET_USER */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57744,11 +57834,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_MOVIE", function() { return RECEIVE_MOVIE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCH", function() { return RECEIVE_SEARCH; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_FAVMOVIES", function() { return RECEIVE_FAVMOVIES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_USER", function() { return SET_USER; });
 // Movies
 var RECEIVE_MOVIES = 'RECEIVE_MOVIES';
 var RECEIVE_MOVIE = 'RECEIVE_MOVIE';
 var RECEIVE_SEARCH = 'RECEIVE_SEARCH';
 var RECEIVE_FAVMOVIES = 'RECEIVE_FAVMOVIES';
+var SET_USER = 'SET_USER';
 
 /***/ }),
 
@@ -57801,6 +57893,45 @@ var initialState = {
 
 /***/ }),
 
+/***/ "./src/redux/reducers/user-reducer.js":
+/*!********************************************!*\
+  !*** ./src/redux/reducers/user-reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/redux/constants.js");
+// reducers({ loadingBar: 0, 
+//     auth: { isAuthenticated: false, 
+//         userObject: null, 
+//         status: null, 
+//         statusText: null, 
+//         isActive: false, 
+//         error: null, 
+//         fetching: false }
+
+var initialState = {
+  user: {}
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _constants__WEBPACK_IMPORTED_MODULE_0__["SET_USER"]:
+      return Object.assign({}, state, {
+        user: action.user
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./src/redux/store.js":
 /*!****************************!*\
   !*** ./src/redux/store.js ***!
@@ -57815,12 +57946,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
 /* harmony import */ var _reducers_movies_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reducers/movies-reducer */ "./src/redux/reducers/movies-reducer.js");
+/* harmony import */ var _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/user-reducer */ "./src/redux/reducers/user-reducer.js");
+
 
 
 
 
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
-/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_movies_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(Object(redux_logger__WEBPACK_IMPORTED_MODULE_1__["createLogger"])(), redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]))));
+var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  movies: _reducers_movies_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  user: _reducers_user_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(rootReducer, composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(Object(redux_logger__WEBPACK_IMPORTED_MODULE_1__["createLogger"])(), redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]))));
 
 /***/ }),
 

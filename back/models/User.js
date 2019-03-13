@@ -1,8 +1,6 @@
-
 const S = require('sequelize');
 const crypto = require('crypto');
 const db = require ('../config/db')
-
 
 const User = db.define('user', {
     email: {
@@ -32,6 +30,6 @@ User.prototype.hashPassword = function (password) {
   }
 
 module.exports = {
-    User: User,
-    db: db,
+    User,
+    db,
 };

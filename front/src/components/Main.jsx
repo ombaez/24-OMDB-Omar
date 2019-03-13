@@ -16,10 +16,11 @@ export default class Main extends React.Component {
      <Switch>
        <Route exact path={'/'} render = {()=> (<SearchInput/>)}/>
        <Route exact path={'/movies/:id'} render={({match}) => (<SingleMovie movieID={match.params.id}/>)}/>
-       <Route exact path={'/users'} render={()=>(<UserReg/>)}/>
-       <Route exact path={"/userReg/login"} render={()=>(<Login/>)}/>
-       <Route exact path={"/userReg/register"} render={()=>(<Register/>)}/>
+       <Route exact path={'/user'} render={()=>(<UserReg/>)}/>
+       <Route exact path={"/user/login"} render={()=>(<Login/>)}/>
+       <Route exact path={"/user/register"} render={()=>(<Register/>)}/>
        <Route exact path={'/favourites'} render = {()=> (<FavouriteMovies/>)}/>
+       {console.log(this.props)}
      </Switch>
       </div>
     )

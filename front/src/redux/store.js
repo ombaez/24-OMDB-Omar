@@ -1,8 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import reducer from './reducers/movies-reducer';
+import moviesReducer from './reducers/movies-reducer';
+import userReducer from './reducers/user-reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const rootReducer = combineReducers({ movies: moviesReducer, user: userReducer })
 
-export default createStore(reducer, composeEnhancers(applyMiddleware(createLogger(), thunkMiddleware)));
+export default createStore(rootReducer, composeEnhancers(applyMiddleware(createLogger(), thunkMiddleware)));

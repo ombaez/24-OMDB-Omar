@@ -6,17 +6,14 @@ export default class UserReg extends React.Component {
   }
   render() {
     return (
-
       <div>
-        <Link to="/userReg">
-          <h1>Login - Register</h1>
-        </Link>
-        <Link to="/userReg/login"><div>LOGIN</div></Link>
-        <Link to="/userReg/register"><div>REGISTER</div></Link>
-        <form method="POST" action="/logout">
+        <h1>Login - Register</h1>
+        {console.log(this.props)}
+        <Link to="/user/login"><div>LOGIN</div></Link>
+        <Link to="/user/register"><div>REGISTER</div></Link>
+        <form>
           <button>LogOut</button>
         </form>
-
       </div>
     )
   }

@@ -1,18 +1,45 @@
 import React from 'react'
 
-const Login = ({onSubmit})=>(
-    <div>
-    <h1>OMDB</h1>
-<strong>LOGIN</strong>
 
-    <div>
-      <form method="POST" action="/users/login">
-        <input placeholder="Email" name="email" />
-        <input placeholder="Password" name="password" />
-        <button onSubmit={onSubmit}>SUBMIT</button> 
-      </form>
-    </div> 
-  </div>
-)
+class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      input:''
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-export default Login
+
+  handleChange(e){
+    const val = e.target.value
+    this.setState({input : val})
+    console.log(this.state.input)
+  }
+
+
+  render() {
+    return (<div>
+      <h1>OMDB</h1>
+      <strong>LOGIN</strong>
+      <div>
+        {console.log(this.props)}
+        <form method="POST" action="/users/login">
+          <input placeholder="Email" onChange={this.handleChange} name="email" />
+          <input placeholder="Password" name="password" />
+          <button onSubmit={console.log(this.props)}>SUBMIT</button>
+        </form>
+      </div>
+    </div>)
+  }
+}
+
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+const mapDispatchToProps = (dispatch) => ({
+  searchMovie: (movieID) => dispatch(oneMovie(movieID))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

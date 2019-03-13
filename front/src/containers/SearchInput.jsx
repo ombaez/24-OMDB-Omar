@@ -44,7 +44,6 @@ class SearchInput extends React.Component {
             <ListItems moviesArr={this.props.result} />
         </div>)
     }
-
 }
 
 
@@ -53,7 +52,7 @@ const mapStateToProps = (state) => ({
     result: state.list,
 });
 const mapDispatchToProps = (dispatch) => ({
-    receiveSearchTitle: (a) => dispatch(receiveSearchTitle(a)),
+    receiveSearchTitle: (input) => dispatch(receiveSearchTitle(input)),
     searchMovies: (movies) => dispatch(buscarMovies(movies))
 })
 

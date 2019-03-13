@@ -20,13 +20,11 @@ export default class Main extends React.Component {
        <Route exact path={"/user/login"} render={()=>(<Login/>)}/>
        <Route exact path={"/user/register"} render={()=>(<Register/>)}/>
        <Route exact path={'/favourites'} render = {()=> (<FavouriteMovies/>)}/>
-       {console.log(this.props)}
      </Switch>
       </div>
     )
   }
 }
-
 
 
 

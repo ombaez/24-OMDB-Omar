@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models/User')
-const templates = require('../public/templates')
 
 router.post('/add', (req, res) => {
   User.create({ email: 'ombaez@gmail.com', password: 'pass1234' })

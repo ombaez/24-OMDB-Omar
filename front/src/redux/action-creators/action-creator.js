@@ -42,6 +42,8 @@ export const oneMovie = idInput => dispatch =>
     .then(res => res.data)
     .then(movie => dispatch(receiveMovie(movie)))
 
+
+    /* TODAS LAS FUNCIONES DEBAJO ESTAN EN DISENIO*/
 export const favMovies = () => dispatch => {
   return ({
     favmovies

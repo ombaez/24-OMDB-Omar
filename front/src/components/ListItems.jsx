@@ -3,7 +3,7 @@ import { Route, Redirect, Switch, Link } from 'react-router-dom';
 import store from '../redux/store'
 
 export default ({ moviesArr }) => {
-    console.log(moviesArr)
+    console.log(this.props)
     return (
         <div className='container'>
             <div className='row'>

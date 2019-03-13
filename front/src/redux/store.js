@@ -5,6 +5,6 @@ import moviesReducer from './reducers/movies-reducer';
 import userReducer from './reducers/user-reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const rootReducer = combineReducers({ movies: moviesReducer, user: userReducer })
+const reducer = combineReducers({ movies: moviesReducer, user: userReducer })
 
-export default createStore(rootReducer, composeEnhancers(applyMiddleware(createLogger(), thunkMiddleware)));
+export default createStore(reducer, composeEnhancers(applyMiddleware(createLogger(), thunkMiddleware)));
